@@ -1,0 +1,29 @@
+app:
+  # 第一个rabbitmq数据源，一般来说，这个数据源就是当前项目主要使用的数据源，
+  # 而rabbitmq-datasource-business1和rabbitmq-datasource-business2则是其他项目的数据源，
+  # 当前项目由于各种各样的原因要监听其他项目的数据源。
+  # 比如之前曾经在做DIPS项目的时候，由于要使用IDC的项目数据作为输入，
+  # 所以DIPS自己就需要去监听IDC的消息队列，才能知道IDC的项目数据什么时候分析出结果，然后再去文件网关取数据
+  rabbitmq-datasource-primary:
+    rabbitmq:
+      host: 192.168.10.200 # ip
+      port: 5672
+      username: admin
+      password: admin
+      virtual-host: /
+  # 第一个其他业务的rabbitmq数据源，一般来自于其他业务，因为本业务与其他业务有联动，所以才会去监听其他业务
+  rabbitmq-datasource-business1:
+    rabbitmq:
+      host: 192.168.10.201 # ip
+      port: 5672
+      username: admin
+      password: admin
+      virtual-host: /
+  # 第一个其他业务的rabbitmq数据源，一般来自于其他业务，因为本业务与其他业务有联动，所以才会去监听其他业务
+  rabbitmq-datasource-business2:
+    rabbitmq:
+      host: 192.168.10.202 # ip
+      port: 5672
+      username: admin
+      password: admin
+      virtual-host: /
